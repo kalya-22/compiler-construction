@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <linearGradient id="cardBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="680" fill="url(#bg)"/>
+
+  <!-- Top Nav Header -->
+  <rect x="30" y="25" width="1140" height="60" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1" filter="url(#shadow)"/>
+  <circle cx="65" cy="55" r="16" fill="#4f46e5" fill-opacity="0.2"/>
+  <text x="65" y="60" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" fill="#818cf8" text-anchor="middle">⚡</text>
+  <text x="95" y="52" font-family="system-ui, sans-serif" font-size="15" font-weight="bold" fill="#ffffff">FSM Lexical Preprocessor</text>
+  <text x="95" y="68" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">Compiler Construction • Lex / Flex Engine</text>
+
+  <rect x="730" y="38" width="130" height="34" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="795" y="60" font-family="system-ui, sans-serif" font-size="12" fill="#e2e8f0" text-anchor="middle">Preset: Mixed ▼</text>
+
+  <rect x="870" y="38" width="140" height="34" rx="8" fill="#0f172a" stroke="#334155"/>
+  <circle cx="888" cy="55" r="5" fill="#10b981"/>
+  <text x="942" y="60" font-family="system-ui, sans-serif" font-size="12" fill="#34d399" text-anchor="middle">Backend Online</text>
+
+  <rect x="1020" y="38" width="130" height="34" rx="8" fill="url(#accent)"/>
+  <text x="1085" y="60" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">▶ Run FSM</text>
+
+  <!-- Metrics Bar -->
+  <g transform="translate(30, 105)">
+    <!-- Metric 1 -->
+    <rect x="0" y="0" width="265" height="85" rx="12" fill="url(#cardBg)" stroke="#334155"/>
+    <text x="20" y="28" font-family="system-ui, sans-serif" font-size="12" fill="#94a3b8">Stream Reduction</text>
+    <text x="20" y="58" font-family="monospace" font-size="24" font-weight="bold" fill="#10b981">53.17%</text>
+    <rect x="20" y="68" width="225" height="4" rx="2" fill="#334155"/>
+    <rect x="20" y="68" width="120" height="4" rx="2" fill="#10b981"/>
+
+    <!-- Metric 2 -->
+    <rect x="290" y="0" width="265" height="85" rx="12" fill="url(#cardBg)" stroke="#334155"/>
+    <text x="310" y="28" font-family="system-ui, sans-serif" font-size="12" fill="#94a3b8">Comments Stripped</text>
+    <text x="310" y="58" font-family="monospace" font-size="24" font-weight="bold" fill="#60a5fa">8 total</text>
+    <text x="310" y="74" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">5 single-line //, 3 block /* */</text>
+
+    <!-- Metric 3 -->
+    <rect x="580" y="0" width="265" height="85" rx="12" fill="url(#cardBg)" stroke="#334155"/>
+    <text x="600" y="28" font-family="system-ui, sans-serif" font-size="12" fill="#94a3b8">Output Size</text>
+    <text x="600" y="58" font-family="monospace" font-size="24" font-weight="bold" fill="#c084fc">377 B</text>
+    <text x="675" y="58" font-family="monospace" font-size="13" fill="#64748b">/ 805 B</text>
+    <text x="600" y="74" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">Lines: 20 → 11</text>
+
+    <!-- Metric 4 -->
+    <rect x="870" y="0" width="270" height="85" rx="12" fill="url(#cardBg)" stroke="#334155"/>
+    <text x="890" y="28" font-family="system-ui, sans-serif" font-size="12" fill="#94a3b8">Blank Lines &amp; Spaces</text>
+    <text x="890" y="58" font-family="monospace" font-size="24" font-weight="bold" fill="#fbbf24">74 chars</text>
+    <text x="890" y="74" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">All empty lines eliminated</text>
+  </g>
+
+  <!-- Dual Panes -->
+  <g transform="translate(30, 210)">
+    <!-- Left Editor (Input) -->
+    <rect x="0" y="0" width="555" height="320" rx="12" fill="#030712" stroke="#1f2937" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="555" height="38" rx="12" fill="#111827"/>
+    <rect x="0" y="26" width="555" height="12" fill="#111827"/>
+    <circle cx="20" cy="19" r="5" fill="#ef4444"/>
+    <circle cx="36" cy="19" r="5" fill="#f59e0b"/>
+    <circle cx="52" cy="19" r="5" fill="#10b981"/>
+    <text x="75" y="24" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#9ca3af">Source Code (Raw Input Stream)</text>
+    <text x="470" y="24" font-family="monospace" font-size="11" fill="#6b7280">20 lines</text>
+
+    <!-- Code lines left -->
+    <g font-family="monospace" font-size="11" fill="#e5e7eb">
+      <text x="20" y="65"><tspan fill="#6b7280"> 1 </tspan><tspan fill="#38bdf8">#include</tspan> <tspan fill="#f472b6">&lt;stdio.h&gt;</tspan></text>
+      <text x="20" y="85"><tspan fill="#6b7280"> 2 </tspan><tspan fill="#6ee7b7">/* Multi-line header algorithm comment */</tspan></text>
+      <text x="20" y="105"><tspan fill="#6b7280"> 3 </tspan><tspan fill="#818cf8">int</tspan> compute(<tspan fill="#818cf8">int</tspan> a, <tspan fill="#818cf8">int</tspan> b) {</text>
+      <text x="20" y="125"><tspan fill="#6b7280"> 4 </tspan>    <tspan fill="#6ee7b7">// Chained division: keep '/'!</tspan></text>
+      <text x="20" y="145"><tspan fill="#6b7280"> 5 </tspan>    <tspan fill="#818cf8">double</tspan> ratio = (<tspan fill="#818cf8">double</tspan>)a / b / <tspan fill="#f59e0b">2.0</tspan>;</text>
+      <text x="20" y="165"><tspan fill="#6b7280"> 6 </tspan>    <tspan fill="#6ee7b7">/* Token */</tspan> <tspan fill="#818cf8">int</tspan><tspan fill="#6ee7b7">/*sep*/</tspan>result = a + b;</text>
+      <text x="20" y="185"><tspan fill="#6b7280"> 7 </tspan>    <tspan fill="#38bdf8">return</tspan> result;</text>
+      <text x="20" y="205"><tspan fill="#6b7280"> 8 </tspan>}</text>
+      <text x="20" y="225"><tspan fill="#6b7280"> 9 </tspan><tspan fill="#818cf8">int</tspan> main() {</text>
+      <text x="20" y="245"><tspan fill="#6b7280">10 </tspan>    <tspan fill="#818cf8">char</tspan>* url = <tspan fill="#fbbf24">"https://api.com//test/*auth*/"</tspan>;</text>
+      <text x="20" y="265"><tspan fill="#6b7280">11 </tspan>    <tspan fill="#818cf8">char</tspan> slash = <tspan fill="#fbbf24">'/'</tspan>;</text>
+      <text x="20" y="285"><tspan fill="#6b7280">12 </tspan>    <tspan fill="#38bdf8">return</tspan> <tspan fill="#f59e0b">0</tspan>;</text>
+      <text x="20" y="305"><tspan fill="#6b7280">13 </tspan>}</text>
+    </g>
+
+    <!-- Right Editor (Output) -->
+    <rect x="585" y="0" width="555" height="320" rx="12" fill="#030712" stroke="#10b981" stroke-opacity="0.3" filter="url(#shadow)"/>
+    <rect x="585" y="0" width="555" height="38" rx="12" fill="#064e3b" fill-opacity="0.3"/>
+    <rect x="585" y="26" width="555" height="12" fill="#064e3b" fill-opacity="0.3"/>
+    <circle cx="605" cy="19" r="5" fill="#10b981"/>
+    <text x="625" y="24" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#34d399">FSM Output (Comments &amp; Blank Lines Eliminated)</text>
+    <rect x="1050" y="8" width="75" height="22" rx="6" fill="#1e293b" stroke="#334155"/>
+    <text x="1087" y="23" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">📋 Copy</text>
+
+    <!-- Code lines right -->
+    <g font-family="monospace" font-size="11" fill="#a7f3d0">
+      <text x="605" y="65"><tspan fill="#059669"> 1 </tspan><tspan fill="#38bdf8">#include</tspan> <tspan fill="#f472b6">&lt;stdio.h&gt;</tspan></text>
+      <text x="605" y="85"><tspan fill="#059669"> 2 </tspan><tspan fill="#818cf8">int</tspan> compute(<tspan fill="#818cf8">int</tspan> a, <tspan fill="#818cf8">int</tspan> b) {</text>
+      <text x="605" y="105"><tspan fill="#059669"> 3 </tspan> double ratio = (<tspan fill="#818cf8">double</tspan>)a / b / <tspan fill="#f59e0b">2.0</tspan>;</text>
+      <text x="605" y="125"><tspan fill="#059669"> 4 </tspan>   <tspan fill="#818cf8">int</tspan> result = a + b;</text>
+      <text x="605" y="145"><tspan fill="#059669"> 5 </tspan> return result;</text>
+      <text x="605" y="165"><tspan fill="#059669"> 6 </tspan>}</text>
+      <text x="605" y="185"><tspan fill="#059669"> 7 </tspan><tspan fill="#818cf8">int</tspan> main() {</text>
+      <text x="605" y="205"><tspan fill="#059669"> 8 </tspan> char* url = <tspan fill="#fbbf24">"https://api.com//test/*auth*/"</tspan>;</text>
+      <text x="605" y="225"><tspan fill="#059669"> 9 </tspan> char slash = <tspan fill="#fbbf24">'/'</tspan>;</text>
+      <text x="605" y="245"><tspan fill="#059669">10 </tspan> return <tspan fill="#f59e0b">0</tspan>;</text>
+      <text x="605" y="265"><tspan fill="#059669">11 </tspan>}</text>
+    </g>
+  </g>
+
+  <!-- Bottom State Space bar -->
+  <g transform="translate(30, 550)">
+    <rect x="0" y="0" width="1140" height="100" rx="12" fill="url(#cardBg)" stroke="#334155"/>
+    <text x="25" y="28" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#94a3b8">FSM State Space Q (Mealy Automaton):</text>
+
+    <!-- State tags -->
+    <g font-family="monospace" font-size="11">
+      <rect x="25" y="45" width="95" height="34" rx="6" fill="#065f46" stroke="#10b981"/><text x="72" y="66" fill="#ecfdf5" text-anchor="middle">CODE (q0)</text>
+      <rect x="130" y="45" width="85" height="34" rx="6" fill="#78350f" stroke="#f59e0b"/><text x="172" y="66" fill="#fef3c7" text-anchor="middle">SLASH</text>
+      <rect x="225" y="45" width="130" height="34" rx="6" fill="#881337" stroke="#f43f5e"/><text x="290" y="66" fill="#ffe4e6" text-anchor="middle">LINE_COMMENT</text>
+      <rect x="365" y="45" width="135" height="34" rx="6" fill="#881337" stroke="#f43f5e"/><text x="432" y="66" fill="#ffe4e6" text-anchor="middle">BLOCK_COMMENT</text>
+      <rect x="510" y="45" width="115" height="34" rx="6" fill="#881337" stroke="#f43f5e"/><text x="567" y="66" fill="#ffe4e6" text-anchor="middle">BLOCK_STAR</text>
+      <rect x="635" y="45" width="135" height="34" rx="6" fill="#581c87" stroke="#a855f7"/><text x="702" y="66" fill="#f3e8ff" text-anchor="middle">STRING_LITERAL</text>
+      <rect x="780" y="45" width="130" height="34" rx="6" fill="#581c87" stroke="#a855f7"/><text x="845" y="66" fill="#f3e8ff" text-anchor="middle">STRING_ESCAPE</text>
+      <rect x="920" y="45" width="105" height="34" rx="6" fill="#155e75" stroke="#06b6d4"/><text x="972" y="66" fill="#ecfeff" text-anchor="middle">WHITESPACE</text>
+      <rect x="1035" y="45" width="80" height="34" rx="6" fill="#1e293b" stroke="#64748b"/><text x="1075" y="66" fill="#e2e8f0" text-anchor="middle">CHAR</text>
+    </g>
+  </g>
+</svg>

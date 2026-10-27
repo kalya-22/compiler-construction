@@ -7,16 +7,26 @@
 [![Tailwind CSS](https://img.shields.io/badge/Styling-Tailwind%20CSS%20v4-38B2AC?style=for-the-badge&logo=tailwindcss)](.)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](.)
 
-> A full-stack **Compiler Construction** laboratory project implementing a formal **Mealy Finite State Machine (FSM)** and an industrial **Lex / Flex** lexical preprocessor that eliminates single-line comments (`//`), multi-line block comments (`/* ... */`), redundant whitespaces, and blank lines while preserving strings, character constants, and token boundaries.
+## 📖 Project Description
+
+In standard compiler architecture, **Phase 1: Lexical Analysis (Scanning)** acts as the frontline gateway between human-written source code and machine translation. Raw source code written by developers contains heavy non-executable clutter, including:
+- **Single-line comments (`// ...`)**
+- **Multi-line block comments (`/* ... */`)**
+- **Redundant consecutive spaces & tabs**
+- **Scattered empty & blank lines**
+
+This project implements a high-performance **Lexical Preprocessor** for C/C++/Java/JavaScript source code modeled as a formal **Mealy Finite State Machine (FSM)**. The core scanning engine is implemented natively in **Lex / Flex (`lex/remover.l`)** utilizing **Exclusive Start Conditions (`%x`)** and compiled into a standalone native C executable (`remover.exe`).
+
+The system couples the native Lex engine with a modern **React + Vite** web dashboard and a **FastAPI** service bridge, providing live code preprocessing, real-time token reduction metrics, a character-by-character step simulator, and a formal transition matrix.
 
 ---
 
 ## 🌟 Key Features
 
 - **🚀 Native Lex / Flex Engine**: The core lexical analyzer is written in **Lex (`lex/remover.l`)** using **Exclusive Start Conditions (`%x`)** and compiled into a native C executable (`remover.exe`).
-- **🛡️ Strict Syntax Preservation**:
+- **🛡️ Strict Syntactic Preservation**:
   - **Strings & URLs**: Comments inside `"https://api.com//v1/*auth*/"` are preserved verbatim.
-  - **Escaped Quotes**: Handles `\"` and `\'` without misinterpreting string boundaries.
+  - **Escaped Quotes**: Accurately processes `\"` and `\'` without premature delimiter closure.
   - **Division Operators**: Disambiguates arithmetic division (`a / b / 2.0`) from comment slashes.
   - **Token Boundaries**: Converts `int/*comment*/x;` into `int x;` rather than merged `intx;`.
 - **🧹 Blank Line Elimination**: Emptied lines left behind by deleted comments are automatically detected via intelligent line buffering and completely eliminated.
@@ -59,7 +69,7 @@
 The preprocessor is formally modeled as a 6-tuple Mealy Machine:
 $$M = \langle Q, \Sigma, \Delta, \delta, \lambda, q_0 \rangle$$
 
-### 1. States $Q$ (10 States)
+### States $Q$ (10 States)
 | State | Type | Description |
 | :--- | :--- | :--- |
 | `CODE` ($q_0$) | Initial / Accepting | Normal source code parsing |
@@ -78,8 +88,8 @@ $$M = \langle Q, \Sigma, \Delta, \delta, \lambda, q_0 \rangle$$
 ## 📁 Repository Structure
 
 ```
-compiler-construction-fsm/
-├── backend/                       # Python FastAPI Backend
+compiler-construction/
+├── backend/                       # Python FastAPI Backend Bridge
 │   ├── app/
 │   │   ├── fsm/                   # Formal FSM Engine & Transition Matrix
 │   │   │   ├── engine.py          # Character-by-character trace generator
@@ -111,10 +121,13 @@ compiler-construction-fsm/
 │   ├── compile.bat                # Windows build script
 │   └── README.md                  # Lex documentation & compilation guide
 │
-├── Project_Report.pdf             # Formal 3-page academic project report (PDF)
-├── Project_Report.docx            # Formal academic project report (Word)
+├── docs/                          # Project Screenshots & Assets
+│   └── screenshots/
+│       ├── ui_preview.svg         # High-resolution Web UI dashboard preview
+│       └── backend_status.png     # Live backend server status screenshot
+│
 ├── start_project.bat              # 1-Click launcher script for Windows
-├── .gitignore
+├── .gitignore                     # Git ignore rules
 └── README.md                      # Project documentation
 ```
 
@@ -124,9 +137,9 @@ compiler-construction-fsm/
 
 ### Option 1: 1-Click Launch (Windows)
 Double-click **`start_project.bat`** in the root directory. It automatically:
-1. Starts the FastAPI + Lex backend.
-2. Starts the Vite React frontend.
-3. Opens your browser to **http://127.0.0.1:5173**.
+1. Starts the FastAPI + Lex backend (`http://127.0.0.1:8000`).
+2. Starts the Vite React frontend (`http://127.0.0.1:5173`).
+3. Opens your default web browser to the application dashboard!
 
 ---
 
@@ -172,11 +185,65 @@ remover.exe --json input_test.c
 
 ---
 
-## 📜 Academic Documentation
+## 📸 Screenshots & UI Showcase
 
-The complete academic project report is available in the repository:
-- **[Project_Report.pdf](Project_Report.pdf)** (Ready-to-print submission format)
-- **[Project_Report.docx](Project_Report.docx)** (Editable Microsoft Word format)
+### 1. Web Application Dashboard (Dual-Pane Preprocessor & Metrics)
+The interactive web interface showing real-time comment removal, blank line elimination, reduction metrics, and active FSM state highlights:
+
+![Web Application Dashboard](docs/screenshots/ui_preview.svg)
+
+---
+
+### 2. Live Backend Server Verification
+The FastAPI backend status endpoint confirming online health and Lex engine connection at `http://127.0.0.1:8000/`:
+
+![Backend Online Status](docs/screenshots/backend_status.png)
+
+---
+
+### 3. Native Lex Execution (Terminal CLI)
+Executing `remover.exe` directly on `input_test.c` from the terminal:
+
+```cmd
+C:\compiler-construction\lex> remover.exe input_test.c
+
+=========================================================
+  Compiler Construction: Comment & Whitespace Remover   
+  Module: Lex / Flex Implementation (remover.exe)       
+=========================================================
+
+[INFO] Processing file: input_test.c (Mode: Normalize)
+
+--- [CLEANED OUTPUT STREAM START] ---
+#include <stdio.h>
+int compute( int a, int b ) {
+ double ratio = (double)a / b / 2.0;
+   int result = a + b;
+ return result;
+}
+int main() {
+ char* url = "https://api.example.com/v1/auth//tokens/*debug*/";
+ char* note = "He said, \"Look at // this not a comment!\"";
+ char slash = '/';
+ char star = '*';
+ int val = compute( 100, 20 );
+ printf("Result: %d\n", val);
+ return 0;
+}
+--- [CLEANED OUTPUT STREAM END] ---
+
+=========================================================
+              COMPILER PREPROCESSOR METRICS              
+=========================================================
+  Original Characters:           805
+  Cleaned Characters:            377
+  Characters Removed:            428
+  Reduction Percentage:          53.17%
+  Single-Line Comments (//):     5 removed
+  Multi-Line Comments (/* */):   3 removed
+  Whitespace Normalizations:     74 chars reduced
+=========================================================
+```
 
 ---
 

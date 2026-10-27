@@ -32,10 +32,16 @@ wheels/
 .coverage
 htmlcov/
 
-# Build artifacts
+# Build artifacts & binaries
 frontend/dist/
 frontend/dist-ssr/
 *.local
+*.pdb
+
+# Local Reports (excluded from repo)
+Project_Report.docx
+Project_Report.pdf
+generate_reports.py
 
 # Logs
 *.log
